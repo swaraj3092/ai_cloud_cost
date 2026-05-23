@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model DashboardMetric {
+  id                 Int      @id @default(autoincrement())
+  totalCost          Float
+  potentialSavings   Float
+  activeAnomalies    Int
+  optimizedResources Int
+}
+
+model AiAction {
+  id              Int      @id @default(autoincrement())
+  title           String
+  description     String
+  savingsEstimate Float
+  confidence      Float
+}
+
+model AnalyticsData {
+  id    Int    @id @default(autoincrement())
+  date  String
+  cost  Float
+}
+
+model InfrastructureResource {
+  id         Int    @id @default(autoincrement())
+  resourceId String
+  type       String
+  status     String
+  cost       Float
+}
+
+model CodeDeployment {
+  id         Int    @id @default(autoincrement())
+  commitHash String
+  author     String
+  costDelta  String
+}
